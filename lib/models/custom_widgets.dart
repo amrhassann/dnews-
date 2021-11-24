@@ -1,12 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dnews/constants.dart';
 import 'package:dnews/screens/secondScreen.dart';
 import 'package:flutter/material.dart';
 
 class MainCard extends StatelessWidget {
-  final String imageUrl;
-  final String label;
-  final String category;
+  final String? imageUrl;
+  final String? label;
+  final String? category;
   MainCard({this.category , this.imageUrl , this.label});
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,7 @@ class MainCard extends StatelessWidget {
                 height: 110,
                 child: CachedNetworkImage(
                   fit: BoxFit.fitWidth,
-                  imageUrl: imageUrl,
+                  imageUrl: imageUrl!,
                   placeholder: (context, url) => Center(child: CircularProgressIndicator()),
                   errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
@@ -39,7 +38,7 @@ class MainCard extends StatelessWidget {
                 height: 110,
                 width: double.infinity,
                 child:  Center(
-                  child: Text(label , style: kSportsButtonTextStyle,),
+                  child: Text(label! ,),
                 ),
               ),
             ),

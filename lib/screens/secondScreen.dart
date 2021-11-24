@@ -6,7 +6,7 @@ import 'package:dnews/constants.dart';
 import 'package:expandable_text/expandable_text.dart';
 
 class SecondScreen extends StatefulWidget {
-  final String topSelected;
+  final String? topSelected;
   SecondScreen({this.topSelected});
   @override
   _SecondScreenState createState() => _SecondScreenState(topSelected);
@@ -19,7 +19,7 @@ class _SecondScreenState extends State<SecondScreen> {
   int currentPage = 1;
   bool loading = true;
   ScrollController scrollController = new ScrollController();
-  final String selectedCategory;
+  final String? selectedCategory;
   _SecondScreenState(this.selectedCategory);
   fetchNews() {
     newsApi
@@ -60,7 +60,7 @@ class _SecondScreenState extends State<SecondScreen> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text(selectedCategory + ' news' , style: TextStyle(color: Colors.blue[700]),),
+          title: Text(selectedCategory! + ' news' , style: TextStyle(color: Colors.blue[700]),),
           centerTitle: true,
           leading: IconButton(
             icon:Icon(Icons.arrow_back_rounded , color: Colors.blue[700],),
@@ -125,10 +125,10 @@ class _SecondScreenState extends State<SecondScreen> {
                                       Column(
                                         children: [
                                           Text(
-                                            articles[position].name,
-                                            style: kAuthorTextStyle,
+                                            articles[position].name!,
+                                            
                                           ),
-                                          Text(articles[position].publishedAt.substring(0,10) ,style: kDateTextStyle,),
+                                          Text(articles[position].publishedAt!.substring(0,10) ,  ),
                                         ],
                                       ),
                                     ],),
@@ -143,19 +143,17 @@ class _SecondScreenState extends State<SecondScreen> {
                                 ),
                                 (articles[position].title) != null
                                     ? Text(
-                                        articles[position].title,
-                                        style: kTitleTextStyle,
+                                        articles[position].title!,
                                         textDirection: TextDirection.rtl,
                                       )
                                     : Text(' '),
                                 SizedBox(height: 10,),
                                 (articles[position].description) != null
                                     ? ExpandableText(
-                                        articles[position].description,
+                                        articles[position].description!,
                                         expandText: 'Show more',
                                         collapseText: 'Show less',
                                         maxLines: 2,
-                                        style: kDescriptionTextStyle,
                                         textDirection: TextDirection.rtl,
                                   linkColor: Colors.grey,
                                       )
@@ -168,7 +166,7 @@ class _SecondScreenState extends State<SecondScreen> {
                                   height: 250,
                                   width:double.infinity ,
                                   child: Image.network(
-                                      articles[position].urlToImage),
+                                      articles[position].urlToImage!),
                                 )
                                     : SizedBox(
                                   height: 250,

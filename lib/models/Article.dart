@@ -1,5 +1,5 @@
 class Article {
-  String author, title, description, url, urlToImage, content , name , publishedAt; //simple vars
+  String? author, title, description, url, urlToImage, content , name , publishedAt; //simple vars
   Article(
       this.author,
       this.title,

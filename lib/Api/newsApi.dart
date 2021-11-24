@@ -10,11 +10,11 @@ class NewsApi {
   };
 
 
-  Future<List<Article>> fetchArticle({int page  , String category , country}) async {
+  Future<List<Article>> fetchArticle({int? page  , String? category , country}) async {
     String news =
         'https://newsapi.org/v2/top-headlines?country=$country&category=$category&apiKey=ff978dce03944637884fe011dd70db94&page=' +
             page.toString();
-    http.Response response = await http.get(news, headers: headers);
+    http.Response response = await http.get(Uri.parse(news), headers: headers);
 
     if (response.statusCode != 200) {
       print('status code = ${response.statusCode}');
