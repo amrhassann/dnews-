@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dnews/screens/secondScreen.dart';
+import 'package:dnews/view/screens/second_screen.dart';
+import 'package:dnews/view_models/main_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MainCard extends StatelessWidget {
   final String? imageUrl;
@@ -38,7 +40,7 @@ class MainCard extends StatelessWidget {
                 height: 110,
                 width: double.infinity,
                 child:  Center(
-                  child: Text(label! ,),
+                  child: Text(label!),
                 ),
               ),
             ),
@@ -46,7 +48,9 @@ class MainCard extends StatelessWidget {
         ),
       ),
       onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>SecondScreen(topSelected: category,)));
+        MainVM.selectedCategory = category;
+        Get.to(()=>SecondScreen());
+        // Navigator.push(context, MaterialPageRoute(builder: (context)=>SecondScreen(topSelected: category,)));
       },
     );
   }

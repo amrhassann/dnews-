@@ -21,11 +21,9 @@ class NewsApi {
     }
 
     var body = jsonDecode(response.body); // body of api
-    var jsonArticles = body['articles']; // the articles from api (body)
-    List<Article> articles = []; // you will add items inside this List
-    for (var item in jsonArticles) {
-      articles.add(Article.fromjson(item)); // adding items to article List
-    }
-    return articles; // return articles after added all of item, so this is articles List + items
+    var jsonArticles = body['articles'] as List;
+    var articles = jsonArticles.map((e) => Article.fromjson(e)).toList();
+
+    return articles;
   }
 }

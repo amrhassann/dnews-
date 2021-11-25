@@ -31,6 +31,8 @@ dependencies:
   http:
   expandable_text:
   cached_network_image:
+  get:
+  webview_flutter: ^2.3.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
