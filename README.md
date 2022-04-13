@@ -1,6 +1,12 @@
 # dnews
 
-A new Flutter application.
+news application.
+using:
+  http.
+  getx state management.
+  google api.
+ 
+  
 
 .
 .
